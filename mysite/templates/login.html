@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<h1>Login</h1>
+
+{% if loginFail %}
+    <div class="alert alert-info alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Info!</strong> Wrong passowrd
+    </div>
+{% endif %}
+
+<form method="post"  action="{% url 'login' %}">
+    {% csrf_token %}  
+    {{ form|crispy}}
+    <!-- {{ form.name.errors }} -->
+    <button type="submit" class="btn btn-outline-primary">Login</button>
+</form>
+<a href="{% url 'register' %}" class="btn btn-outline-primary">Register</a>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Transaction</h1>
+<form method="post" novalidate>
+     <!-- {{form}} -->
+     {% csrf_token %}  
+     {{ form|crispy}}
+     <strong>Transaction Date: {{today}}</strong>
+     <br>
+     <button type="submit">Apply</button>
+</form>
+
+{% endblock %}

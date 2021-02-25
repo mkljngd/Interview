@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2>Homepage</h2>
+<p>lol</p>
+{% if user.is_authenticated %}
+    {{user.username}}
+{% endif %}
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>Mobile</th>
+        <th>PAN</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Interest</th>
+        <th>Final Amount</th>
+        <th>Loan Date</th>
+        <th>Loan Limit</th>
+    </tr>
+
+{% for user in users %}
+      <tr>
+          <td> {{ user.name }} </td>
+          <td> {{ user.dob }} </td>
+          <td> {{ user.mobile }} </td>
+          <!-- <td> {{ user.password }} </td> -->
+          <td> {{ user.pan }} </td>
+          <td> {{ user.address }} </td>
+          <td> {{ user.city }} </td>
+          <td> {{ user.state }} </td>
+          <td> {{ user.interest }} </td>
+          <td> {{ user.final_amount }} </td>
+          <td> {{ user.loan_date  }} </td>
+          <td> {{ user.loan_limit  }} </td>
+      </tr>
+      {% endfor %}
+</table>
+<a href="/logoutuser">Log Out</a>
+{% endblock %}
